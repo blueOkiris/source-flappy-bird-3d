@@ -12,4 +12,4 @@ Just run `make`
 
  - GNU make
  - g++
- - glut (freeglut3-dev on Debian)
+ - Debian packages: libglew-dev libglm-dev libglfw3-dev
