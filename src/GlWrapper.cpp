@@ -3,6 +3,10 @@
 #include <GL/glut.h>
 #include <GlWrapper.hpp>
 
+/*
+ * I believe this is old OpenGL, so don't use
+ */
+
 using namespace flappybird;
 
 void glut::Window::_changeSize(const int width, const int height) {

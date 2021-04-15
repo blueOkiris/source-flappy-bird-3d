@@ -2,6 +2,10 @@
 #include <vector>
 #include <GL/glut.h>
 
+/*
+ * I believe this is old OpenGL, so don't use
+ */
+
 namespace flappybird {
     namespace gl {
         template<class T>

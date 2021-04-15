@@ -4,6 +4,7 @@
 
 using namespace flappybird;
 
+// Based on old open gl
 void glWrapperTest(int *argc, char **args);
 void glWrapperTestDisplay(void);
 void glWrapperTestKeyboard(
@@ -18,7 +19,9 @@ void glTestDisplay(void);
 
 int main(int argc, char **args) {
     //glTest(&argc, args);
-    glWrapperTest(&argc, args);
+    //glWrapperTest(&argc, args);
+    
+    
     return 0;
 }
 
