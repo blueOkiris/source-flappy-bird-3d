@@ -4,7 +4,7 @@ SRC :=		$(wildcard src/*.cpp)
 HFILES :=	$(wildcard include/*.hpp)
 INC :=		-Iinclude
 CPPC :=		g++
-CPPFLAGS :=	-O2 -Wall -std=c++17
+CPPFLAGS :=	-g -Wall -std=c++17
 LD :=		g++
 LDFLAGS :=	-L/usr/lib/x86_64-linux-gnu -lglfw -lGLEW -lGL
 
