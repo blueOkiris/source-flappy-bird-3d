@@ -1,16 +1,43 @@
 #include <iostream>
+#include <GlWrapper.hpp>
 #include <GL/glut.h>
 
-void glTest(int *argc, char **argv);
+using namespace flappybird;
+
+void glWrapperTest(int *argc, char **args);
+void glWrapperTestDisplay(void);
+void glTest(int *argc, char **args);
 void glTestDisplay(void);
 
-int main(int argc, char **argv) {
-    glTest(&argc, argv);
+int main(int argc, char **args) {
+    //glTest(&argc, args);
+    glWrapperTest(&argc, args);
     return 0;
 }
 
-void glTest(int *argc, char **argv) {
-    glutInit(argc, argv);
+void glWrapperTest(int *argc, char **args) {
+    glut::init(argc, args);
+    const glut::Window win(
+        "GL Wrapper Test", { 640, 480 },
+        { GLUT_SCREEN_WIDTH / 2 - 320, GLUT_SCREEN_HEIGHT / 2 - 240 },
+        glTestDisplay
+    );
+    win.run();
+}
+
+void glWrapperTestDisplay(void) {
+    gl::clear();
+    gl::pushQuads({
+        { -0.5f, -0.5f },
+        { 0.5f, -0.5f },
+        { 0.5f, 0.5f },
+        { -0.5f, 0.5f }
+    });
+    gl::display();
+}
+
+void glTest(int *argc, char **args) {
+    glutInit(argc, args);
     glutCreateWindow("GLUT Test");
     glutInitWindowSize(640, 480);
     glutInitWindowPosition(
