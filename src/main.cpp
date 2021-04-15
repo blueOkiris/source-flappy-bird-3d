@@ -6,6 +6,13 @@ using namespace flappybird;
 
 void glWrapperTest(int *argc, char **args);
 void glWrapperTestDisplay(void);
+void glWrapperTestKeyboard(
+    const uint8_t key, const int mouseX, const int mouseY
+);
+void glWrapperTestMouse(
+    const int button, const int state, const int mouseX, const int mouseY
+);
+
 void glTest(int *argc, char **args);
 void glTestDisplay(void);
 
@@ -19,21 +26,48 @@ void glWrapperTest(int *argc, char **args) {
     glut::init(argc, args);
     const glut::Window win(
         "GL Wrapper Test", { 640, 480 },
-        { GLUT_SCREEN_WIDTH / 2 - 320, GLUT_SCREEN_HEIGHT / 2 - 240 },
-        glTestDisplay
+        { GLUT_SCREEN_WIDTH / 2 - 320, GLUT_SCREEN_HEIGHT / 2 - 240 }
     );
-    win.run();
+    win.run(glWrapperTestDisplay, glWrapperTestKeyboard, glWrapperTestMouse);
 }
 
+
 void glWrapperTestDisplay(void) {
+    static float angle = 0.0f;
+    
     gl::clear();
-    gl::pushQuads({
-        { -0.5f, -0.5f },
-        { 0.5f, -0.5f },
-        { 0.5f, 0.5f },
-        { -0.5f, 0.5f }
+    
+    // Reset transformations and set the camera
+    gl::loadIdentity();
+    gl::utility::lookAt({ 0, 0, 10 }, { 0, 0, 0 }, { 0, 1, 0 });
+    
+    gl::rotate(angle, { 0, 1, 0 });         // Apply rotation
+    
+    // Draw triangle
+    gl::clear();
+    gl::pushTris({
+        { -2, -2, -5 },
+        { 2, 0, -5 },
+        { 0, 2, -5 },
     });
     gl::display();
+    
+    // Rotate more
+    angle += 0.1f;
+    
+    gl::display();
+}
+
+void glWrapperTestKeyboard(
+        const uint8_t key, const int mouseX, const int mouseY) {
+    if(key == static_cast<uint8_t>(glut::Key::Escape)) {
+        exit(0);
+    }
+}
+
+void glWrapperTestMouse(
+        const int button, const int state, const int mouseX, const int mouseY) {
+    
 }
 
 void glTest(int *argc, char **args) {

@@ -6,7 +6,7 @@ INC :=		-Iinclude
 CPPC :=		g++
 CPPFLAGS :=	-O2 -Wall -std=c++17
 LD :=		g++
-LDFLAGS :=	-L/usr/lib/x86_64-linux-gnu -lglut -lGL
+LDFLAGS :=	-L/usr/lib/x86_64-linux-gnu -lglut -lGL -lGLU
 
 # Autogen properties
 OBJS :=		$(subst .cpp,.o,$(subst src/,obj/,$(SRC)))
